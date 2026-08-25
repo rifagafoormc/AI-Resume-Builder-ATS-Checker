@@ -1,5 +1,5 @@
 const express = require("express");
-const { signup, login } = require("../controllers/authController");
+const { signup, login, createAdmin } = require("../controllers/authController");
 const {
   authMiddleware,
   requireUser,
@@ -8,20 +8,21 @@ const {
 
 const router = express.Router();
 
-// Signup
+// Public routes
 router.post("/signup", signup);
-
-// Login - coming next
 router.post("/login", login);
 
-// Logout - coming next
+// Admin creation route (protected by admin secret)
+router.post("/create-admin", createAdmin);
+
+// Logout route (client-side token removal)
 router.post("/logout", (req, res) => {
   res.json({
-    message: "Logout route is working"
+    message: "Logout successful"
   });
 });
 
-// Profile - coming next
+// Protected routes
 router.get("/profile", authMiddleware, (req, res) => {
   res.json({
     message: "Profile accessed successfully",
@@ -29,6 +30,7 @@ router.get("/profile", authMiddleware, (req, res) => {
   });
 });
 
+// User-only route
 router.get("/check-user", authMiddleware, requireUser, (req, res) => {
   res.json({
     message: "User authorization successful",
@@ -36,6 +38,7 @@ router.get("/check-user", authMiddleware, requireUser, (req, res) => {
   });
 });
 
+// Admin-only route
 router.get("/check-admin", authMiddleware, requireAdmin, (req, res) => {
   res.json({
     message: "Admin authorization successful",

@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 // Signup
 const signup = async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({
@@ -27,7 +27,7 @@ const signup = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      role: role || "user"
+      role: "user" // Always set to "user" for public signup
     });
 
     res.status(201).json({
@@ -111,7 +111,65 @@ const login = async (req, res) => {
   }
 };
 
+// Optional: Admin creation endpoint (should be protected or used only once)
+// Create Admin
+const createAdmin = async (req, res) => {
+  try {
+    const { name, email, password, adminSecret } = req.body;
+
+    if (!name || !email || !password || !adminSecret) {
+      return res.status(400).json({
+        message: "Name, email, password and admin secret are required"
+      });
+    }
+
+    // Verify admin secret
+    if (adminSecret !== process.env.ADMIN_SECRET) {
+      return res.status(403).json({
+        message: "Invalid admin secret"
+      });
+    }
+
+    // Check if admin already exists
+    const existingAdmin = await User.findOne({ email });
+
+    if (existingAdmin) {
+      return res.status(400).json({
+        message: "User with this email already exists"
+      });
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create admin
+    const admin = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+      role: "admin"
+    });
+
+    res.status(201).json({
+      message: "Admin created successfully",
+      user: {
+        id: admin._id,
+        name: admin.name,
+        email: admin.email,
+        role: admin.role
+      }
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Admin creation failed",
+      error: error.message
+    });
+  }
+};
+
 module.exports = {
   signup,
-  login
+  login,
+  createAdmin
 };
