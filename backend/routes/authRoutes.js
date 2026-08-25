@@ -1,46 +1,45 @@
 const express = require("express");
+const { signup, login } = require("../controllers/authController");
+const {
+  authMiddleware,
+  requireUser,
+  requireAdmin
+} = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
 // Signup
-router.post("/signup", (req, res) => {
-  res.json({
-    message: "Signup route is working"
-  });
-});
+router.post("/signup", signup);
 
-// Login
-router.post("/login", (req, res) => {
-  res.json({
-    message: "Login route is working"
-  });
-});
+// Login - coming next
+router.post("/login", login);
 
-// Logout
+// Logout - coming next
 router.post("/logout", (req, res) => {
   res.json({
     message: "Logout route is working"
   });
 });
 
-// Profile
-router.get("/profile", (req, res) => {
+// Profile - coming next
+router.get("/profile", authMiddleware, (req, res) => {
   res.json({
-    message: "Profile route is working"
+    message: "Profile accessed successfully",
+    user: req.user
   });
 });
 
-// Check user
-router.get("/check-user", (req, res) => {
+router.get("/check-user", authMiddleware, requireUser, (req, res) => {
   res.json({
-    message: "User authorization route is working"
+    message: "User authorization successful",
+    user: req.user
   });
 });
 
-// Check admin
-router.get("/check-admin", (req, res) => {
+router.get("/check-admin", authMiddleware, requireAdmin, (req, res) => {
   res.json({
-    message: "Admin authorization route is working"
+    message: "Admin authorization successful",
+    user: req.user
   });
 });
 
