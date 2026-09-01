@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css"; // ✅ ADD THIS LINE - Import the CSS file
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -26,4 +27,3 @@ function App() {
 }
 
 export default App;
-

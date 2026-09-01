@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
 import "../App.css";
 
@@ -9,20 +9,33 @@ function Dashboard() {
   const [resumes, setResumes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState(""); // 'error' or 'success'
+  const [messageType, setMessageType] = useState("");
+  const [userName, setUserName] = useState("User");
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const token = localStorage.getItem("token");
 
   useEffect(() => {
+    // Check if user is logged in
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+
+    // Get user name from localStorage
+    const userData = JSON.parse(localStorage.getItem("user") || "{}");
+    if (userData.name) {
+      setUserName(userData.name);
+    }
+
     fetchResumes();
   }, []);
 
   const fetchResumes = async () => {
     setLoading(true);
     setMessage("");
-    
+
     try {
-      // Try to fetch from API first
       const response = await API.get("/resumes", {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -30,22 +43,16 @@ function Dashboard() {
       });
 
       const resumeData = response.data.resumes || response.data;
-      
+
       if (Array.isArray(resumeData) && resumeData.length > 0) {
         setResumes(resumeData);
-        // Also save to localStorage as backup
         localStorage.setItem("savedResumes", JSON.stringify(resumeData));
       } else {
-        // If no resumes from API, check localStorage
         loadFromLocalStorage();
       }
     } catch (error) {
       console.error("Error fetching resumes:", error);
-      
-      // If API fails, try to load from localStorage
       loadFromLocalStorage();
-      
-      // Show message but don't clear existing resumes
       setMessage("Could not connect to server. Showing saved resumes.");
       setMessageType("error");
     } finally {
@@ -80,17 +87,12 @@ function Dashboard() {
         },
       });
 
-      // Remove from state
       const updatedResumes = resumes.filter((resume) => resume._id !== id);
       setResumes(updatedResumes);
-      
-      // Update localStorage
       localStorage.setItem("savedResumes", JSON.stringify(updatedResumes));
-      
+
       setMessage("Resume deleted successfully!");
       setMessageType("success");
-      
-      // Clear message after 3 seconds
       setTimeout(() => setMessage(""), 3000);
     } catch (error) {
       console.error(error);
@@ -101,6 +103,7 @@ function Dashboard() {
 
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     navigate("/login");
   };
 
@@ -109,205 +112,195 @@ function Dashboard() {
     navigate("/templates");
   };
 
-  // Save resume to dashboard when created
-  const saveResumeToDashboard = (resumeData) => {
-    const savedResumes = JSON.parse(localStorage.getItem("savedResumes") || "[]");
-    const newResume = {
-      _id: Date.now().toString(),
-      title: resumeData.title || "Untitled Resume",
-      personalInfo: resumeData.personalInfo || { fullName: "" },
-      createdAt: new Date().toISOString(),
-      ...resumeData
-    };
-    
-    savedResumes.unshift(newResume);
-    localStorage.setItem("savedResumes", JSON.stringify(savedResumes));
-    setResumes(savedResumes);
+  const getInitials = (name) => {
+    if (!name) return "U";
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
   };
 
   return (
     <div className="dashboard">
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
-          <div className="hero-badge">
-            <span className="badge-icon">✨</span>
-            This resume builder gets you hired faster
-          </div>
+      {/* ===== TOP NAVBAR WITH ALL NAV ITEMS ===== */}
+      <nav className="dashboard-navbar">
+        <div className="dashboard-nav-left">
+          <Link to="/" className="logo">🚀 ResumeAI</Link>
+        </div>
+
+        <div className="dashboard-nav-center">
+          <Link to="/dashboard" className="nav-link active">
+            <span className="nav-icon">📊</span>
+            Dashboard
+          </Link>
+          <Link to="/dashboard" className="nav-link">
+            <span className="nav-icon">📄</span>
+            My Resumes
+          </Link>
+          <Link to="/templates" className="nav-link">
+            <span className="nav-icon">🎨</span>
+            Templates
+          </Link>
+          <Link to="/ats-score" className="nav-link">
+            <span className="nav-icon">📈</span>
+            ATS Score
+          </Link>
+          <Link to="/ai-suggestions" className="nav-link">
+            <span className="nav-icon">💡</span>
+            AI Suggestions
+          </Link>
+        </div>
+
+        <div className="dashboard-nav-right">
+          <button className="nav-button" onClick={createResume}>
+            + New Resume
+          </button>
           
-          <h1 className="hero-title">
-            Only <span className="highlight">2%</span> of resumes win.
-            <br />
-            Yours will be one of them.
-          </h1>
-
-          <div className="hero-buttons">
-            <button className="btn-primary" onClick={createResume}>
-              Create my resume
-            </button>
-            <button className="btn-secondary">
-              Upload my resume
-            </button>
-          </div>
-
-          <div className="hero-stats">
-            <div className="stat">
-              <span className="stat-number">39%</span>
-              <span className="stat-label">more likely to land the job</span>
+          <div className="user-profile">
+            <div className="user-avatar" title={userName}>
+              {getInitials(userName)}
             </div>
-          </div>
-
-          <div className="trustpilot">
-            <div className="trustpilot-stars">
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-            </div>
-            <span className="trustpilot-text">
-              Trustpilot <strong>4.2</strong> out of 5 | 56,042 reviews
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Templates Section */}
-      <section className="templates-section">
-        <div className="section-header">
-          <h2 className="section-title">Resume templates</h2>
-          <p className="section-subtitle">
-            Each resume template is designed to follow the exact rules you need to get hired faster.
-            <br />
-            Use our resume templates and get free access to 18 more career tools!
-          </p>
-          <div className="header-buttons">
-            <button className="btn-primary" onClick={createResume}>
-              Create my resume
-            </button>
-            <button className="btn-secondary">
-              Upload my resume
-            </button>
-          </div>
-        </div>
-
-        {/* Template Filter Tabs */}
-        <div className="template-tabs">
-          <button className="tab active">All templates</button>
-          <button className="tab">ATS</button>
-          <button className="tab">Word</button>
-          <button className="tab">Simple</button>
-          <button className="tab">Professional</button>
-          <button className="tab">Two-column</button>
-          <button className="tab">Google Docs</button>
-        </div>
-
-        {/* Template Grid */}
-        <div className="template-grid">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <div className="template-card" key={item} onClick={createResume}>
-              <div className="template-preview">
-                <div className="template-placeholder">
-                  <div className="template-profile">
-                    <div className="profile-avatar"></div>
-                    <div className="profile-name">Tiffany Giroux</div>
-                    <div className="profile-title">Profile</div>
-                    <div className="profile-text">
-                      f Tiffany & Augusta Ashely
-                      <br />
-                      tive customer satisfaction. Presen
-                      <br />
-                      e of a client's needs and wants in order to achieve their goals.
-                    </div>
-                  </div>
+            <div className="user-dropdown">
+              <button 
+                className="dropdown-btn"
+                onClick={() => setShowDropdown(!showDropdown)}
+              >
+                <span className="user-name">{userName}</span>
+                <span className="dropdown-arrow">▼</span>
+              </button>
+              {showDropdown && (
+                <div className="dropdown-menu show">
+                  <Link to="/profile" className="dropdown-item">
+                    <span>👤</span> Profile
+                  </Link>
+                  <hr className="dropdown-divider" />
+                  <button onClick={logout} className="dropdown-item logout">
+                    <span>🚪</span> Logout
+                  </button>
                 </div>
-              </div>
-              <div className="template-info">
-                <h3>Professional Template {item}</h3>
-                <p>Clean and modern design</p>
-              </div>
+              )}
             </div>
-          ))}
+          </div>
         </div>
-      </section>
+      </nav>
 
-      {/* Dashboard Content */}
-      <section className="dashboard-content">
-        <div className="dashboard-title">
+      {/* ===== DASHBOARD CONTENT ===== */}
+      <main className="dashboard-content-full">
+        {/* Welcome Section */}
+        <div className="dashboard-welcome">
           <div>
-            <h2>My Resumes</h2>
-            <p>Create and manage your professional resumes.</p>
+            <h1>Welcome back, {userName}! 👋</h1>
+            <p>Here's an overview of your resumes and activity.</p>
           </div>
           <button className="btn-primary" onClick={createResume}>
-            + Create Resume
+            + Create New Resume
           </button>
         </div>
 
-        {loading && <p className="loading-text">Loading resumes...</p>}
+        {/* Stats Cards */}
+        <div className="dashboard-stats">
+          <div className="stat-card">
+            <div className="stat-icon">📄</div>
+            <div className="stat-info">
+              <h3>{resumes.length}</h3>
+              <p>Total Resumes</p>
+            </div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">📈</div>
+            <div className="stat-info">
+              <h3>85%</h3>
+              <p>Average ATS Score</p>
+            </div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">🏆</div>
+            <div className="stat-info">
+              <h3>12</h3>
+              <p>Applications Sent</p>
+            </div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">👀</div>
+            <div className="stat-info">
+              <h3>5</h3>
+              <p>Profile Views</p>
+            </div>
+          </div>
+        </div>
 
+        {/* Messages */}
         {message && (
           <div className={`message ${messageType}`}>
             {message}
           </div>
         )}
 
-        {!loading && resumes.length === 0 && (
-          <div className="empty-state">
-            <div className="empty-icon">📄</div>
-            <h3>No resumes yet</h3>
-            <p>Create your first resume to get started.</p>
-            <button className="btn-primary" onClick={createResume}>
-              Create Your First Resume
-            </button>
+        {/* Resume List */}
+        <div className="dashboard-resumes">
+          <div className="section-header">
+            <h2>My Resumes</h2>
+            <p>Create and manage your professional resumes.</p>
           </div>
-        )}
 
-        <div className="resume-grid">
-          {resumes.map((resume) => (
-            <div className="resume-card" key={resume._id}>
-              <div className="resume-card-header">
-                <div className="resume-icon">📄</div>
-                <h3>{resume.title || "Untitled Resume"}</h3>
-              </div>
-              <p className="resume-name">
-                {resume.personalInfo?.fullName || "No name added"}
-              </p>
-              {resume.createdAt && (
-                <p className="resume-date" style={{ fontSize: '11px', color: '#9ca3af', paddingLeft: '36px', marginBottom: '10px' }}>
-                  Created: {new Date(resume.createdAt).toLocaleDateString()}
-                </p>
-              )}
-              <div className="resume-actions">
-                <button
-                  className="btn-edit"
-                  onClick={() => navigate(`/edit-resume/${resume._id}`)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn-view"
-                  onClick={() => {
-                    localStorage.setItem("resumeDraft", JSON.stringify(resume));
-                    navigate("/resume-preview");
-                  }}
-                  style={{
-                    background: '#dbeafe',
-                    color: '#2563eb',
-                  }}
-                >
-                  View
-                </button>
-                <button
-                  className="btn-delete"
-                  onClick={() => deleteResume(resume._id)}
-                >
-                  Delete
-                </button>
-              </div>
+          {loading && <p className="loading-text">Loading resumes...</p>}
+
+          {!loading && resumes.length === 0 && (
+            <div className="empty-state">
+              <div className="empty-icon">📄</div>
+              <h3>No resumes yet</h3>
+              <p>Create your first resume to get started.</p>
+              <button className="btn-primary" onClick={createResume}>
+                Create Your First Resume
+              </button>
             </div>
-          ))}
+          )}
+
+          <div className="resume-grid">
+            {resumes.map((resume) => (
+              <div className="resume-card" key={resume._id}>
+                <div className="resume-card-header">
+                  <div className="resume-icon">📄</div>
+                  <h3>{resume.title || "Untitled Resume"}</h3>
+                </div>
+                <p className="resume-name">
+                  {resume.personalInfo?.fullName || "No name added"}
+                </p>
+                {resume.createdAt && (
+                  <p className="resume-date">
+                    Created: {new Date(resume.createdAt).toLocaleDateString()}
+                  </p>
+                )}
+                <div className="resume-actions">
+                  <button
+                    className="btn-edit"
+                    onClick={() => navigate(`/edit-resume/${resume._id}`)}
+                  >
+                    ✏️ Edit
+                  </button>
+                  <button
+                    className="btn-view"
+                    onClick={() => {
+                      localStorage.setItem("resumeDraft", JSON.stringify(resume));
+                      navigate("/resume-preview");
+                    }}
+                  >
+                    👁️ View
+                  </button>
+                  <button
+                    className="btn-delete"
+                    onClick={() => deleteResume(resume._id)}
+                  >
+                    🗑️ Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+      </main>
     </div>
   );
 }
