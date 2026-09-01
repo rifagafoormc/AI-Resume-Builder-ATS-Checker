@@ -1,33 +1,29 @@
 const express = require("express");
 
+const {
+  analyzeResume,
+  getAnalysisHistory,
+  getAnalysisById,
+  deleteAnalysis
+} = require("../controllers/atsController");
+
+const { authMiddleware } = require("../middleware/authMiddleware");
+
 const router = express.Router();
 
-// Analyze resume
-router.post("/analyze", (req, res) => {
-  res.json({
-    message: "ATS analysis route is working"
-  });
-});
+// All ATS routes require authentication
+router.use(authMiddleware);
 
-// Get ATS analysis history
-router.get("/history", (req, res) => {
-  res.json({
-    message: "ATS history route is working"
-  });
-});
+// Analyze a resume
+router.post("/analyze", analyzeResume);
+
+// Get logged-in user's ATS analysis history
+router.get("/history", getAnalysisHistory);
 
 // Get one ATS analysis
-router.get("/:id", (req, res) => {
-  res.json({
-    message: `Get ATS analysis ${req.params.id} route is working`
-  });
-});
+router.get("/:id", getAnalysisById);
 
-// Delete ATS analysis
-router.delete("/:id", (req, res) => {
-  res.json({
-    message: `Delete ATS analysis ${req.params.id} route is working`
-  });
-});
+// Delete one ATS analysis
+router.delete("/:id", deleteAnalysis);
 
 module.exports = router;

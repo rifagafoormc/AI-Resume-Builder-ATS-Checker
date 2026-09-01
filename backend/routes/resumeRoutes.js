@@ -1,40 +1,33 @@
 const express = require("express");
 
+const {
+  createResume,
+  getResumes,
+  getResume,
+  updateResume,
+  deleteResume
+} = require("../controllers/resumeController");
+
+const { authMiddleware } = require("../middleware/authMiddleware");
+
 const router = express.Router();
 
-// Create a resume
-router.post("/", (req, res) => {
-  res.json({
-    message: "Create resume route is working"
-  });
-});
+// All resume routes require authentication
+router.use(authMiddleware);
+
+// Create resume
+router.post("/", createResume);
 
 // Get all resumes
-router.get("/", (req, res) => {
-  res.json({
-    message: "Get all resumes route is working"
-  });
-});
+router.get("/", getResumes);
 
 // Get one resume
-router.get("/:id", (req, res) => {
-  res.json({
-    message: `Get resume ${req.params.id} route is working`
-  });
-});
+router.get("/:id", getResume);
 
-// Update a resume
-router.put("/:id", (req, res) => {
-  res.json({
-    message: `Update resume ${req.params.id} route is working`
-  });
-});
+// Update resume
+router.put("/:id", updateResume);
 
-// Delete a resume
-router.delete("/:id", (req, res) => {
-  res.json({
-    message: `Delete resume ${req.params.id} route is working`
-  });
-});
+// Delete resume
+router.delete("/:id", deleteResume);
 
 module.exports = router;

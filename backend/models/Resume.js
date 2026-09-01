@@ -16,7 +16,7 @@ const resumeSchema = new mongoose.Schema(
 
     template: {
       type: String,
-      required: true
+      default: "professional"
     },
 
     personalInfo: {
@@ -25,29 +25,32 @@ const resumeSchema = new mongoose.Schema(
       phone: String,
       location: String,
       linkedin: String,
-      github: String
+      github: String,
+      portfolio: String
     },
 
     summary: {
-      type: String
+      type: String,
+      default: ""
     },
-
-    experience: [
-      {
-        jobTitle: String,
-        company: String,
-        startDate: String,
-        endDate: String,
-        description: String
-      }
-    ],
 
     education: [
       {
-        degree: String,
         institution: String,
+        degree: String,
+        field: String,
         startDate: String,
         endDate: String
+      }
+    ],
+
+    experience: [
+      {
+        company: String,
+        position: String,
+        startDate: String,
+        endDate: String,
+        description: String
       }
     ],
 
@@ -59,7 +62,7 @@ const resumeSchema = new mongoose.Schema(
 
     projects: [
       {
-        title: String,
+        name: String,
         description: String,
         technologies: String
       }
@@ -78,6 +81,4 @@ const resumeSchema = new mongoose.Schema(
   }
 );
 
-const Resume = mongoose.model("Resume", resumeSchema);
-
-module.exports = Resume;
+module.exports = mongoose.model("Resume", resumeSchema);

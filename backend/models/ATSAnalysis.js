@@ -20,9 +20,7 @@ const atsAnalysisSchema = new mongoose.Schema(
 
     atsScore: {
       type: Number,
-      required: true,
-      min: 0,
-      max: 100
+      default: 0
     },
 
     matchedKeywords: [
@@ -48,6 +46,4 @@ const atsAnalysisSchema = new mongoose.Schema(
   }
 );
 
-const ATSAnalysis = mongoose.model("ATSAnalysis", atsAnalysisSchema);
-
-module.exports = ATSAnalysis;
+module.exports = mongoose.model("ATSAnalysis", atsAnalysisSchema);
