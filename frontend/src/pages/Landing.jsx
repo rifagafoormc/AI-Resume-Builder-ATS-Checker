@@ -2,73 +2,88 @@ import { Link } from "react-router-dom";
 
 function Landing() {
   return (
-    <div className="landing-page">
+    <div className="landing-page" style={{ backgroundColor: "#F4F9F8" }}>
       {/* ===== NAVBAR ===== */}
-      <nav className="navbar">
-        <div className="logo">🚀 ResumeAI</div>
+      <nav className="navbar" style={{ background: "#ffffff", color: "#165B6D" }}>
+        <div className="logo" style={{ 
+          display: "flex", 
+          alignItems: "center", 
+          gap: "8px", 
+          color: "#199E72",
+          background: "none",          
+          backgroundImage: "none",     
+          WebkitTextFillColor: "#199E72" 
+        }}>
+          {/* Light Green Rocket SVG Icon */}
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 24 24" 
+            fill="#199E72" 
+            width="24" 
+            height="24"
+          >
+            <path d="M12 2c-3.5 0-6 2.5-6 6 0 1.5.5 3 1.5 4.5L6 18l3 1.5L9 22c0 .5.5 1 1 1s1-.5 1-1v-2.5L12 19l1 .5V22c0 .5.5 1 1 1s1-.5 1-1l0-2.5L18 18l-1.5-5.5C17.5 11 18 9.5 18 8c0-3.5-2.5-6-6-6zm-1.5 9.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm3 0c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z" />
+          </svg>
+          
+          scoreCraft
+        </div>
 
         <div className="nav-links">
-          <Link to="/login">Login</Link>
-          <Link to="/register" className="nav-button">
+          <Link to="/login" style={{ color: "#165B6D", textDecoration: "none" }}>Login</Link>
+          <Link to="/register" className="nav-button" style={{
+            background: "#199E72",
+            color: "#fff",
+            padding: "8px 16px",
+            borderRadius: "6px",
+            textDecoration: "none"
+          }}>
             Get Started
           </Link>
         </div>
       </nav>
 
       {/* ===== HERO SECTION ===== */}
-      <main className="hero-section">
+      <main className="hero-section" style={{ background: "linear-gradient(135deg, #E6F2F0 0%, #D5F5E3 100%)", color: "#165B6D" }}>
         <div className="hero-content">
-          <div className="hero-badge">
+          <div className="hero-badge" style={{
+            background: "rgba(25, 158, 114, 0.1)",
+            color: "#165B6D",
+            border: "1px solid rgba(25, 158, 114, 0.2)"
+          }}>
             <span className="badge-icon">✨</span>
             AI-POWERED RESUME BUILDER
           </div>
 
-          <h1 className="hero-title">
+          <h1 className="hero-title" style={{ color: "#165B6D" }}>
             Build a Resume That
-            <span className="highlight"> Gets Noticed.</span>
+            <span className="highlight" style={{ color: "#199E72" }}> Gets Noticed.</span>
           </h1>
 
-          <p className="hero-text">
+          <p className="hero-text" style={{ color: "#4A5568" }}>
             Create professional, ATS-friendly resumes with the power of AI.
             Build, analyze and improve your resume in one place.
           </p>
 
           <div className="hero-buttons">
-            <Link to="/register" className="btn-primary">
+            <Link to="/register" className="btn-primary" style={{
+              background: "linear-gradient(135deg, #165B6D 0%, #199E72 100%)",
+              color: "#fff",
+              padding: "12px 24px",
+              borderRadius: "8px",
+              textDecoration: "none"
+            }}>
               Create My Resume →
             </Link>
 
-            <Link to="/login" className="btn-secondary">
+            <Link to="/login" className="btn-secondary" style={{
+              color: "#165B6D",
+              border: "2px solid #165B6D",
+              padding: "12px 24px",
+              borderRadius: "8px",
+              textDecoration: "none"
+            }}>
               Sign In
             </Link>
-          </div>
-
-          <div className="hero-stats">
-            <div className="stat">
-              <span className="stat-number">10K+</span>
-              <span className="stat-label">Resumes Created</span>
-            </div>
-            <div className="stat">
-              <span className="stat-number">95%</span>
-              <span className="stat-label">ATS Score Rate</span>
-            </div>
-            <div className="stat">
-              <span className="stat-number">4.9</span>
-              <span className="stat-label">User Rating</span>
-            </div>
-          </div>
-
-          <div className="trustpilot">
-            <div className="trustpilot-stars">
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-            </div>
-            <div className="trustpilot-text">
-              <strong>Trustpilot</strong> · 4.9/5 · 2,000+ reviews
-            </div>
           </div>
         </div>
       </main>
@@ -77,14 +92,14 @@ function Landing() {
       <section className="features-section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Why Choose ResumeAI?</h2>
+            <h2 className="section-title">Why Choose scoreCraft?</h2>
             <p className="section-subtitle">
               Everything you need to create a professional resume that stands out
             </p>
           </div>
 
           <div className="features-grid">
-            <div className="feature-card">
+            <div className="feature-card" style={{ borderTop: "3px solid #199E72" }}>
               <div className="feature-icon">🤖</div>
               <h3>AI-Powered Suggestions</h3>
               <p>
@@ -93,7 +108,7 @@ function Landing() {
               </p>
             </div>
 
-            <div className="feature-card">
+            <div className="feature-card" style={{ borderTop: "3px solid #165B6D" }}>
               <div className="feature-icon">📊</div>
               <h3>ATS Score Checker</h3>
               <p>
@@ -102,7 +117,7 @@ function Landing() {
               </p>
             </div>
 
-            <div className="feature-card">
+            <div className="feature-card" style={{ borderTop: "3px solid #199E72" }}>
               <div className="feature-icon">🎨</div>
               <h3>Professional Templates</h3>
               <p>
@@ -111,7 +126,7 @@ function Landing() {
               </p>
             </div>
 
-            <div className="feature-card">
+            <div className="feature-card" style={{ borderTop: "3px solid #165B6D" }}>
               <div className="feature-icon">📝</div>
               <h3>Real-Time Editing</h3>
               <p>
@@ -120,7 +135,7 @@ function Landing() {
               </p>
             </div>
 
-            <div className="feature-card">
+            <div className="feature-card" style={{ borderTop: "3px solid #199E72" }}>
               <div className="feature-icon">📄</div>
               <h3>Multiple Export Formats</h3>
               <p>
@@ -129,7 +144,7 @@ function Landing() {
               </p>
             </div>
 
-            <div className="feature-card">
+            <div className="feature-card" style={{ borderTop: "3px solid #165B6D" }}>
               <div className="feature-icon">🔒</div>
               <h3>Secure & Private</h3>
               <p>
@@ -153,7 +168,7 @@ function Landing() {
 
           <div className="steps-grid">
             <div className="step-card">
-              <div className="step-number">1</div>
+              <div className="step-number" style={{ background: "#165B6D", color: "#fff" }}>1</div>
               <div className="step-icon">📋</div>
               <h3>Fill in Your Details</h3>
               <p>
@@ -163,7 +178,7 @@ function Landing() {
             </div>
 
             <div className="step-card">
-              <div className="step-number">2</div>
+              <div className="step-number" style={{ background: "#199E72", color: "#fff" }}>2</div>
               <div className="step-icon">🎨</div>
               <h3>Choose a Template</h3>
               <p>
@@ -172,7 +187,7 @@ function Landing() {
             </div>
 
             <div className="step-card">
-              <div className="step-number">3</div>
+              <div className="step-number" style={{ background: "#165B6D", color: "#fff" }}>3</div>
               <div className="step-icon">📄</div>
               <h3>Download & Apply</h3>
               <p>
@@ -183,7 +198,7 @@ function Landing() {
         </div>
       </section>
 
-      {/* ===== TEMPLATES PREVIEW SECTION ===== */}
+      {/* ===== REAL TEMPLATES SECTION (Empty for now) ===== */}
       <section className="templates-section">
         <div className="container">
           <div className="section-header">
@@ -191,135 +206,63 @@ function Landing() {
             <p className="section-subtitle">
               Choose from our curated collection of modern resume templates
             </p>
-            <Link to="/login" className="btn-primary">
+            <Link to="/login" className="btn-primary" style={{
+              background: "#165B6D",
+              color: "#fff",
+              padding: "10px 20px",
+              borderRadius: "6px",
+              textDecoration: "none"
+            }}>
               View All Templates →
             </Link>
           </div>
 
-          <div className="template-grid">
-            <div className="template-card">
-              <div className="template-preview">
-                <div className="template-placeholder">
-                  <div className="template-profile">
-                    <div className="profile-avatar"></div>
-                    <div className="profile-name">Sarah Johnson</div>
-                    <div className="profile-title">Senior Product Manager</div>
-                    <div className="profile-text">
-                      5+ years of experience in product management...
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="template-info">
-                <h3>Modern Professional</h3>
-                <p>Clean and minimalist design</p>
-              </div>
-            </div>
-
-            <div className="template-card">
-              <div className="template-preview">
-                <div className="template-placeholder">
-                  <div className="template-profile">
-                    <div className="profile-avatar" style={{ background: '#f59e0b' }}></div>
-                    <div className="profile-name">Michael Chen</div>
-                    <div className="profile-title">Software Engineer</div>
-                    <div className="profile-text">
-                      Full-stack developer with 8 years of experience...
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="template-info">
-                <h3>Creative Portfolio</h3>
-                <p>Bold and eye-catching design</p>
-              </div>
-            </div>
-
-            <div className="template-card">
-              <div className="template-preview">
-                <div className="template-placeholder">
-                  <div className="template-profile">
-                    <div className="profile-avatar" style={{ background: '#10b981' }}></div>
-                    <div className="profile-name">Emily Rodriguez</div>
-                    <div className="profile-title">Marketing Director</div>
-                    <div className="profile-text">
-                      Award-winning marketing professional...
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="template-info">
-                {/* ✅ FIXED: Changed from </h4> to </h3> */}
-                <h3>Executive Classic</h3>
-                <p>Sophisticated and elegant design</p>
-              </div>
-            </div>
+          {/* 
+            ============================================
+            👇 INSERT YOUR REAL TEMPLATES HERE 👇
+            ============================================
+            The section is currently completely empty.
+            You can add your actual template cards here in the future.
+          */}
+          
+          <div className="template-grid" style={{ display: "grid", gap: "20px", justifyContent: "center" }}>
+            {/* Placeholder removed. Just add your <div className="template-card"> here */}
           </div>
+
         </div>
       </section>
 
-
       {/* ===== CTA SECTION ===== */}
-      <section className="cta-section">
+      <section className="cta-section" style={{
+        background: "linear-gradient(135deg, #165B6D 0%, #199E72 100%)",
+        color: "#fff",
+        padding: "60px 0"
+      }}>
         <div className="container">
           <div className="cta-content">
             <h2>Ready to Build Your Dream Resume?</h2>
             <p>
-              Join 10,000+ job seekers who landed their dream jobs with ResumeAI
+              Join 10,000+ job seekers who landed their dream jobs with scoreCraft
             </p>
-            <Link to="/register" className="btn-primary">
+            <Link to="/register" className="btn-primary" style={{
+              background: "#fff",
+              color: "#165B6D",
+              padding: "12px 24px",
+              borderRadius: "8px",
+              textDecoration: "none",
+              fontWeight: "bold"
+            }}>
               Start Building for Free →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ===== FOOTER ===== */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-grid">
-            <div className="footer-brand">
-              <div className="logo">🚀 ResumeAI</div>
-              <p>Build better resumes with AI</p>
-            </div>
-
-            <div className="footer-links">
-              <h4>Product</h4>
-              <Link to="/templates">Templates</Link>
-              <Link to="/dashboard">Dashboard</Link>
-              <Link to="/pricing">Pricing</Link>
-            </div>
-
-            <div className="footer-links">
-              <h4>Company</h4>
-              <Link to="/about">About Us</Link>
-              <Link to="/careers">Careers</Link>
-              <Link to="/blog">Blog</Link>
-            </div>
-
-            <div className="footer-links">
-              <h4>Support</h4>
-              <Link to="/help">Help Center</Link>
-              <Link to="/contact">Contact Us</Link>
-              <Link to="/privacy">Privacy Policy</Link>
-            </div>
-
-            <div className="footer-social">
-              <h4>Follow Us</h4>
-              <div className="social-icons">
-                <a href="#" className="social-link">🐦</a>
-                <a href="#" className="social-link">📘</a>
-                <a href="#" className="social-link">📸</a>
-                <a href="#" className="social-link">💼</a>
-              </div>
-            </div>
-          </div>
-
-          <div className="footer-bottom">
-            <p>&copy; 2026 ResumeAI. All rights reserved.</p>
-          </div>
-        </div>
+      {/* ===== SIMPLE COPYRIGHT FOOTER ===== */}
+      <footer className="footer" style={{ background: "#165B6D", color: "#fff", padding: "20px 0", textAlign: "center" }}>
+        <p style={{ color: "#A8DADC", margin: 0 }}>&copy; 2026 scoreCraft. All rights reserved.</p>
       </footer>
+    
     </div>
   );
 }

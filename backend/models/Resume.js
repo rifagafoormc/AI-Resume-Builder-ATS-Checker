@@ -14,6 +14,12 @@ const resumeSchema = new mongoose.Schema(
       trim: true
     },
 
+    // ✅ ADDED: Job Title
+    jobTitle: {
+      type: String,
+      default: ""
+    },
+
     template: {
       type: String,
       default: "professional"
@@ -73,6 +79,14 @@ const resumeSchema = new mongoose.Schema(
         name: String,
         organization: String,
         date: String
+      }
+    ],
+
+    // ✅ ADDED: Languages array
+    languages: [
+      {
+        name: String,
+        proficiency: String
       }
     ]
   },

@@ -1,0 +1,691 @@
+/* =========================================================
+   ATS HISTORY PAGE
+   ========================================================= */
+
+.ats-history-page {
+  min-height: 100vh;
+  background: #f8f9fe;
+  color: #1f2937;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.ats-history-navbar {
+  height: 70px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 40px;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.ats-history-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.logo-icon {
+  font-size: 24px;
+}
+
+.ats-history-nav-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-btn {
+  border: none;
+  background: transparent;
+
+  padding: 10px 18px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.nav-btn:hover {
+  background: #f1f3f9;
+}
+
+.nav-btn.primary {
+  background: #5b5ce2;
+  color: white;
+}
+
+.nav-btn.primary:hover {
+  background: #4b4cc9;
+}
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.ats-history-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 40px 24px 60px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.ats-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.ats-history-header h1 {
+  margin: 0 0 8px;
+
+  font-size: 32px;
+  font-weight: 750;
+}
+
+.ats-history-header p {
+  margin: 0;
+
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.new-analysis-btn {
+  border: none;
+
+  background: #5b5ce2;
+  color: white;
+
+  padding: 12px 20px;
+
+  border-radius: 9px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.new-analysis-btn:hover {
+  background: #4b4cc9;
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.history-error {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+
+  color: #be123c;
+
+  padding: 15px 18px;
+
+  border-radius: 10px;
+
+  margin-bottom: 25px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-history {
+  background: white;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  padding: 70px 30px;
+
+  text-align: center;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.empty-icon {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background: #eef0ff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+}
+
+.empty-history h2 {
+  margin: 0 0 10px;
+
+  font-size: 22px;
+}
+
+.empty-history p {
+  margin: 0 auto 25px;
+
+  max-width: 500px;
+
+  color: #6b7280;
+}
+
+.empty-action-btn {
+  border: none;
+
+  background: #5b5ce2;
+  color: white;
+
+  padding: 12px 22px;
+
+  border-radius: 8px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   ANALYSIS LIST
+   ========================================================= */
+
+.analysis-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* =========================================================
+   ANALYSIS CARD
+   ========================================================= */
+
+.analysis-history-card {
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 16px;
+
+  padding: 28px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+
+  transition: 0.2s;
+}
+
+.analysis-history-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+/* =========================================================
+   CARD MAIN
+   ========================================================= */
+
+.analysis-card-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.analysis-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 20px;
+}
+
+.analysis-label {
+  font-size: 11px;
+  font-weight: 700;
+
+  color: #5b5ce2;
+
+  letter-spacing: 1px;
+}
+
+.analysis-card-top h2 {
+  margin: 5px 0 4px;
+
+  font-size: 21px;
+}
+
+.analysis-date {
+  margin: 0;
+
+  color: #9ca3af;
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   SCORE
+   ========================================================= */
+
+.history-score {
+  min-width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  border: 6px solid #e5e7eb;
+
+  background: #ffffff;
+}
+
+.score-number {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.score-total {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.history-score.excellent {
+  border-color: #22c55e;
+}
+
+.history-score.good {
+  border-color: #f59e0b;
+}
+
+.history-score.needs-work {
+  border-color: #f97316;
+}
+
+.history-score.poor {
+  border-color: #ef4444;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.score-status {
+  display: inline-block;
+
+  margin-top: 12px;
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.score-status.excellent {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.score-status.good {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.score-status.needs-work {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.score-status.poor {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* =========================================================
+   JOB DESCRIPTION
+   ========================================================= */
+
+.job-description-preview {
+  margin-top: 20px;
+
+  padding: 16px;
+
+  background: #f8f9fc;
+
+  border-radius: 10px;
+}
+
+.job-description-preview h3 {
+  margin: 0 0 8px;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.job-description-preview p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+  line-height: 1.6;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.analysis-stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+.analysis-stat {
+  padding: 13px;
+
+  background: #fafafa;
+
+  border: 1px solid #eeeeee;
+
+  border-radius: 9px;
+}
+
+.stat-value {
+  display: block;
+
+  font-size: 19px;
+  font-weight: 750;
+
+  margin-bottom: 3px;
+}
+
+.stat-label {
+  display: block;
+
+  font-size: 11px;
+
+  color: #8a8f98;
+}
+
+/* =========================================================
+   COMPONENT SCORES
+   ========================================================= */
+
+.component-scores {
+  margin-top: 22px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 15px 25px;
+}
+
+.component-item {
+  min-width: 0;
+}
+
+.component-header {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 6px;
+
+  font-size: 12px;
+}
+
+.component-header span {
+  color: #6b7280;
+}
+
+.component-header strong {
+  color: #1f2937;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 7px;
+
+  background: #e5e7eb;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+
+  background: #5b5ce2;
+
+  border-radius: 10px;
+
+  transition: width 0.4s ease;
+}
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.analysis-card-actions {
+  width: 145px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 10px;
+}
+
+.view-analysis-btn,
+.delete-analysis-btn {
+  width: 100%;
+
+  padding: 11px 15px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.view-analysis-btn {
+  border: none;
+
+  background: #5b5ce2;
+  color: white;
+}
+
+.view-analysis-btn:hover {
+  background: #4b4cc9;
+}
+
+.delete-analysis-btn {
+  border: 1px solid #fecaca;
+
+  background: #fff;
+
+  color: #dc2626;
+}
+
+.delete-analysis-btn:hover {
+  background: #fef2f2;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.ats-history-loading {
+  min-height: 70vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #6b7280;
+}
+
+.loading-spinner {
+  width: 35px;
+  height: 35px;
+
+  border: 4px solid #e5e7eb;
+  border-top-color: #5b5ce2;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .analysis-history-card {
+    flex-direction: column;
+  }
+
+  .analysis-card-actions {
+    width: 100%;
+
+    flex-direction: row;
+  }
+
+  .analysis-card-actions button {
+    flex: 1;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .ats-history-navbar {
+    padding: 0 18px;
+  }
+
+  .ats-history-logo span:last-child {
+    display: none;
+  }
+
+  .ats-history-container {
+    padding: 25px 15px 40px;
+  }
+
+  .ats-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .ats-history-header h1 {
+    font-size: 26px;
+  }
+
+  .new-analysis-btn {
+    width: 100%;
+  }
+
+  .analysis-history-card {
+    padding: 20px;
+  }
+
+  .analysis-card-top {
+    flex-direction: column;
+  }
+
+  .history-score {
+    width: 75px;
+    height: 75px;
+  }
+
+  .analysis-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .component-scores {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 450px) {
+
+  .ats-history-nav-actions .nav-btn:first-child {
+    display: none;
+  }
+
+  .analysis-card-actions {
+    flex-direction: column;
+  }
+
+}

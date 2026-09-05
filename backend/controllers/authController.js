@@ -27,7 +27,7 @@ const signup = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      role: "user" // Always set to "user" for public signup
+      role: "user"
     });
 
     res.status(201).json({
@@ -59,7 +59,6 @@ const login = async (req, res) => {
       });
     }
 
-    // Find user
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -68,7 +67,6 @@ const login = async (req, res) => {
       });
     }
 
-    // Compare password
     const isPasswordValid = await bcrypt.compare(
       password,
       user.password
@@ -80,7 +78,6 @@ const login = async (req, res) => {
       });
     }
 
-    // Generate JWT
     const token = jwt.sign(
       {
         userId: user._id,
@@ -111,7 +108,6 @@ const login = async (req, res) => {
   }
 };
 
-// Optional: Admin creation endpoint (should be protected or used only once)
 // Create Admin
 const createAdmin = async (req, res) => {
   try {
@@ -123,14 +119,12 @@ const createAdmin = async (req, res) => {
       });
     }
 
-    // Verify admin secret
     if (adminSecret !== process.env.ADMIN_SECRET) {
       return res.status(403).json({
         message: "Invalid admin secret"
       });
     }
 
-    // Check if admin already exists
     const existingAdmin = await User.findOne({ email });
 
     if (existingAdmin) {
@@ -139,10 +133,8 @@ const createAdmin = async (req, res) => {
       });
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create admin
     const admin = await User.create({
       name,
       email,
@@ -168,8 +160,176 @@ const createAdmin = async (req, res) => {
   }
 };
 
+// Get logged-in user's profile
+const getProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId).select("-password");
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
+
+    res.status(200).json({
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        createdAt: user.createdAt
+      }
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to fetch profile",
+      error: error.message
+    });
+  }
+};
+
+// Update logged-in user's profile
+const updateProfile = async (req, res) => {
+  try {
+    const { name } = req.body;
+
+    if (!name || !name.trim()) {
+      return res.status(400).json({
+        message: "Name cannot be empty"
+      });
+    }
+
+    const user = await User.findById(req.user.userId);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
+
+    user.name = name.trim();
+    await user.save();
+
+    res.status(200).json({
+      message: "Profile updated successfully",
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+      }
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to update profile",
+      error: error.message
+    });
+  }
+};
+
+// Change logged-in user's password (for Profile)
+const changePassword = async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({
+        message: "Current password and new password are required"
+      });
+    }
+
+    if (newPassword.length < 6) {
+      return res.status(400).json({
+        message: "New password must be at least 6 characters"
+      });
+    }
+
+    const user = await User.findById(req.user.userId);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
+
+    const isPasswordValid = await bcrypt.compare(
+      currentPassword,
+      user.password
+    );
+
+    if (!isPasswordValid) {
+      return res.status(401).json({
+        message: "Current password is incorrect"
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    user.password = hashedPassword;
+    await user.save();
+
+    res.status(200).json({
+      message: "Password changed successfully"
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to change password",
+      error: error.message
+    });
+  }
+};
+
+// Reset password for user who forgot it (public route, no login required)
+const forgotPassword = async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+
+    if (!email || !newPassword) {
+      return res.status(400).json({
+        message: "Email and new password are required"
+      });
+    }
+
+    if (newPassword.length < 6) {
+      return res.status(400).json({
+        message: "New password must be at least 6 characters"
+      });
+    }
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User with this email not found"
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    user.password = hashedPassword;
+    await user.save();
+
+    res.status(200).json({
+      message: "Password reset successfully"
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to reset password",
+      error: error.message
+    });
+  }
+};
+
 module.exports = {
   signup,
   login,
-  createAdmin
+  createAdmin,
+  getProfile,
+  updateProfile,
+  changePassword,
+  forgotPassword
 };

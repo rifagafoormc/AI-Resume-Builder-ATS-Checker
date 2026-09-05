@@ -8,9 +8,11 @@ const atsAnalysisSchema = new mongoose.Schema(
       required: true
     },
 
+    // Optional because uploaded files may not belong to a saved Resume document
     resume: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Resume"
+      ref: "Resume",
+      default: null
     },
 
     jobDescription: {
@@ -21,6 +23,115 @@ const atsAnalysisSchema = new mongoose.Schema(
     atsScore: {
       type: Number,
       default: 0
+    },
+
+    weightedScore: {
+      type: Number,
+      default: 0
+    },
+
+    componentScores: {
+      contentAndImpact: {
+        score: {
+          type: Number,
+          default: 0
+        },
+        weight: {
+          type: Number,
+          default: 0.35
+        },
+        weightedContribution: {
+          type: Number,
+          default: 0
+        },
+        analysis: {
+          type: String,
+          default: ""
+        }
+      },
+
+      keywordMatch: {
+        score: {
+          type: Number,
+          default: 0
+        },
+        weight: {
+          type: Number,
+          default: 0.25
+        },
+        weightedContribution: {
+          type: Number,
+          default: 0
+        },
+
+        matchedKeywords: [
+          {
+            type: String
+          }
+        ],
+
+        missingKeywords: [
+          {
+            type: String
+          }
+        ],
+
+        analysis: {
+          type: String,
+          default: ""
+        }
+      },
+
+      skills: {
+        score: {
+          type: Number,
+          default: 0
+        },
+        weight: {
+          type: Number,
+          default: 0.25
+        },
+        weightedContribution: {
+          type: Number,
+          default: 0
+        },
+
+        matchedSkills: [
+          {
+            type: String
+          }
+        ],
+
+        missingSkills: [
+          {
+            type: String
+          }
+        ],
+
+        analysis: {
+          type: String,
+          default: ""
+        }
+      },
+
+      formatting: {
+        score: {
+          type: Number,
+          default: 0
+        },
+        weight: {
+          type: Number,
+          default: 0.15
+        },
+        weightedContribution: {
+          type: Number,
+          default: 0
+        },
+        analysis: {
+          type: String,
+          default: ""
+        }
+      }
     },
 
     matchedKeywords: [
@@ -37,9 +148,27 @@ const atsAnalysisSchema = new mongoose.Schema(
 
     suggestions: [
       {
-        type: String
+        category: {
+          type: String,
+          default: ""
+        },
+
+        priority: {
+          type: String,
+          default: ""
+        },
+
+        suggestion: {
+          type: String,
+          default: ""
+        }
       }
-    ]
+    ],
+
+    summary: {
+      type: String,
+      default: ""
+    }
   },
   {
     timestamps: true
@@ -47,3 +176,4 @@ const atsAnalysisSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("ATSAnalysis", atsAnalysisSchema);
+

@@ -1,5 +1,5 @@
 /* ========================================
-   MAIN CSS WITH PURPLE/INDIGO AESTHETIC
+   MAIN CSS WITH TEAL/GREEN AESTHETIC
    ======================================== */
 
 * {
@@ -10,7 +10,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-  background: #f8f9fe;
+  background: #f4f9f8; /* Changed from purple to light teal */
   color: #1a1a2e;
 }
 
@@ -304,12 +304,12 @@ body {
 }
 
 /* ========================================
-   TEMPLATES SECTION (Dashboard)
+   TEMPLATES SECTION (Dashboard) - UPDATED TO TEAL/GREEN
    ======================================== */
 
 .templates-section {
   padding: 60px 8%;
-  background: #f8f9fe;
+  background: #E6F2F0; /* Changed from #f8f9fe to light green */
 }
 
 .section-header {
@@ -321,12 +321,12 @@ body {
 .section-title {
   font-size: 36px;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #165B6D; /* Changed to Dark Teal */
   margin-bottom: 15px;
 }
 
 .section-subtitle {
-  color: #6b7280;
+  color: #4A5568; /* Changed from #6b7280 to darker gray */
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 30px;
@@ -340,17 +340,17 @@ body {
 }
 
 .header-buttons .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #165B6D 0%, #199E72 100%); /* Green Gradient */
   color: white;
 }
 
 .header-buttons .btn-secondary {
-  border: 2px solid #667eea;
-  color: #667eea;
+  border: 2px solid #165B6D;
+  color: #165B6D;
 }
 
 .header-buttons .btn-secondary:hover {
-  background: #667eea;
+  background: #165B6D;
   color: white;
 }
 
@@ -375,12 +375,12 @@ body {
 }
 
 .tab:hover {
-  border-color: #667eea;
-  color: #667eea;
+  border-color: #199E72;
+  color: #199E72;
 }
 
 .tab.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #165B6D 0%, #199E72 100%); /* Green Gradient */
   color: white;
   border-color: transparent;
 }
@@ -402,17 +402,17 @@ body {
 
 .template-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 40px rgba(102, 126, 234, 0.15);
+  box-shadow: 0 8px 40px rgba(22, 91, 109, 0.15); /* Changed to Teal shadow */
 }
 
 .template-preview {
-  background: #f8f9fe;
+  background: #E6F2F0; /* Changed to light green */
   padding: 20px;
   height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #D5F5E3;
 }
 
 .template-placeholder {
@@ -426,14 +426,14 @@ body {
 
 .template-profile {
   font-size: 11px;
-  color: #4a4a6a;
+  color: #4A5568;
 }
 
 .profile-avatar {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #165B6D 0%, #199E72 100%); /* Green Gradient */
   margin-bottom: 8px;
 }
 
@@ -446,7 +446,7 @@ body {
 
 .profile-title {
   font-weight: 500;
-  color: #667eea;
+  color: #199E72; /* Changed to Green */
   margin-bottom: 4px;
   font-size: 10px;
 }
@@ -474,12 +474,12 @@ body {
 }
 
 /* ========================================
-   TEMPLATES PAGE (Selection)
+   TEMPLATES PAGE (Selection) - UPDATED TO TEAL/GREEN
    ======================================== */
 
 .templates-page {
   min-height: 100vh;
-  background: #f8f9fe;
+  background: #E6F2F0; /* Changed from #f8f9fe to Light Green */
   padding: 40px 20px;
 }
 
@@ -499,14 +499,14 @@ body {
   font-weight: 700;
   color: #1a1a2e;
   margin-bottom: 8px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #165B6D 0%, #199E72 100%); /* Green Gradient */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .templates-header p {
-  color: #6b7280;
+  color: #4A5568;
   font-size: 16px;
 }
 
@@ -530,12 +530,12 @@ body {
 
 .template-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 50px rgba(102, 126, 234, 0.15);
+  box-shadow: 0 12px 50px rgba(22, 91, 109, 0.15); /* Teal Shadow */
 }
 
 .template-card.selected {
-  border-color: #667eea;
-  box-shadow: 0 12px 50px rgba(102, 126, 234, 0.2);
+  border-color: #199E72; /* Green Border */
+  box-shadow: 0 12px 50px rgba(25, 158, 114, 0.2); /* Green Shadow */
   transform: translateY(-8px);
 }
 
@@ -552,7 +552,7 @@ body {
   transition: all 0.3s ease;
   overflow: hidden;
   position: relative;
-  background: #f8f9fe;
+  background: #E6F2F0; /* Light Green */
 }
 
 .template-card:hover .template-preview {
@@ -575,14 +575,14 @@ body {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: #667eea;
+  background: #199E72; /* Green */
   color: white;
   padding: 6px 16px;
   border-radius: 50px;
   font-size: 12px;
   font-weight: 600;
   animation: slideIn 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(25, 158, 114, 0.3); /* Green Shadow */
   z-index: 10;
 }
 
@@ -624,11 +624,12 @@ body {
 }
 
 .template-text p {
-  color: #6b7280;
+  color: #4A5568;
   font-size: 14px;
   line-height: 1.5;
 }
 
+/* UPDATED EYE BUTTON */
 .select-button {
   margin: 0 24px 20px;
   width: calc(100% - 48px);
@@ -644,21 +645,50 @@ body {
 }
 
 .select-button:hover {
-  border-color: #667eea;
-  color: #667eea;
-  background: #f8f9fe;
+  border-color: #199E72; /* Green */
+  color: #199E72; /* Green */
+  background: #E6F2F0; /* Light Green */
 }
 
 .select-button.selected {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #165B6D 0%, #199E72 100%); /* Green Gradient */
   color: white;
   border-color: transparent;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(22, 91, 109, 0.3); /* Teal Shadow */
 }
 
 .select-button.selected:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 25px rgba(22, 91, 109, 0.4); /* Teal Shadow */
+}
+
+/* ===== EYE BUTTON (BIGGER, MORE INSIDE, CENTERED) ===== */
+.view-template-btn {
+  background: #ffffff;
+  color: #165B6D;
+  border: 1.5px solid #165B6D;
+  width: 48px;  /* Increased from 40px */
+  height: 48px; /* Increased from 40px */
+  margin-left: 8px; /* Added margin to push it away from the border */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.view-template-btn:hover {
+  background: #165B6D;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(22, 91, 109, 0.2);
+}
+
+.view-template-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 .continue-section {
@@ -667,7 +697,7 @@ body {
 }
 
 .continue-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #165B6D 0%, #199E72 100%); /* Green Gradient */
   color: white;
   border: none;
   padding: 16px 48px;
@@ -676,13 +706,13 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(22, 91, 109, 0.3); /* Teal Shadow */
   animation: fadeInUp 0.5s ease;
 }
 
 .continue-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 30px rgba(22, 91, 109, 0.4); /* Teal Shadow */
 }
 
 @keyframes fadeInUp {
@@ -695,7 +725,6 @@ body {
     transform: translateY(0);
   }
 }
-
 /* ========================================
    DASHBOARD
    ======================================== */
@@ -914,12 +943,12 @@ body {
 }
 
 /* ========================================
-   BUILDER PAGE (BasicDetails)
+   BUILDER PAGE (BasicDetails) - UPDATED TO TEAL/GREEN
    ======================================== */
 
 .builder-page {
   min-height: 100vh;
-  background: #f8f9fe;
+  background: #E6F2F0; /* Changed from #f8f9fe to Light Green */
   padding: 40px 20px;
 }
 
@@ -937,19 +966,20 @@ body {
   margin-bottom: 40px;
 }
 
+/* FORCED GREEN TITLE (Overrides global purple) */
 .builder-header h1 {
   font-size: 32px;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #165B6D !important; /* Dark Teal */
   margin-bottom: 8px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: #165B6D !important;
+  background-clip: initial !important;
 }
 
 .builder-header p {
-  color: #6b7280;
+  color: #4A5568;
   font-size: 16px;
 }
 
@@ -965,7 +995,7 @@ body {
 
 .form-section-divider h2 {
   font-size: 20px;
-  color: #1a1a2e;
+  color: #165B6D; /* Dark Teal */
   font-weight: 600;
   position: relative;
   padding-bottom: 10px;
@@ -978,7 +1008,7 @@ body {
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #165B6D 0%, #199E72 100%); /* Green Gradient */
   border-radius: 2px;
 }
 
@@ -997,7 +1027,7 @@ body {
 .form-group label {
   font-size: 14px;
   font-weight: 600;
-  color: #1a1a2e;
+  color: #165B6D; /* Dark Teal */
   letter-spacing: 0.3px;
 }
 
@@ -1017,8 +1047,8 @@ body {
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  border-color: #199E72; /* Green */
+  box-shadow: 0 0 0 4px rgba(25, 158, 114, 0.1); /* Green Shadow */
   background: white;
 }
 
@@ -1038,7 +1068,85 @@ body {
   align-items: center;
   margin-top: 40px;
   padding-top: 30px;
-  border-top: 2px solid #f0f0f0;
+  border-top: 2px solid #e5e7eb;
+}
+
+/* ========================================
+   PROGRESS STEPS (Forced to Green)
+   ======================================== */
+
+.progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.step {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  background: #e5e7eb;
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.step.active {
+  background: #199E72 !important; /* Green */
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(25, 158, 114, 0.3);
+}
+
+.step.done {
+  background: #199E72;
+  color: white;
+}
+
+.step-line {
+  width: 30px;
+  height: 2px;
+  background: #e5e7eb;
+}
+
+.step.active + .step-line,
+.step.done + .step-line {
+  background: #199E72; /* Green */
+}
+
+/* ========================================
+   AI ENHANCE BUTTON
+   ======================================== */
+
+.ai-enhance-btn {
+  background-color: #E6F2F0;
+  color: #165B6D;
+  border: 1px solid #199E72;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.ai-enhance-btn:hover {
+  background-color: #165B6D;
+  color: #ffffff;
+  border-color: #165B6D;
+}
+
+.ai-enhance-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* ========================================
@@ -2858,4 +2966,951 @@ body {
   .dashboard-welcome h1 {
     font-size: 18px;
   }
+}
+/* ========================================
+   PROGRESS STEPS
+   ======================================== */
+
+.progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.step {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  background: #e5e7eb;
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.step.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.step.done {
+  background: #10b981;
+  color: white;
+}
+
+.step-line {
+  width: 30px;
+  height: 2px;
+  background: #e5e7eb;
+}
+
+.step.done + .step-line {
+  background: #10b981;
+}
+
+/* ========================================
+   REPEATABLE CARDS
+   ======================================== */
+
+.repeatable-card {
+  background: #f8f9fe;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.repeatable-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.08);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-number {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  background: #e5e7eb;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+  background: #fee2e2;
+}
+
+/* ========================================
+   ADD BUTTON
+   ======================================== */
+
+.add-btn {
+  width: 100%;
+  padding: 12px;
+  border: 2px dashed #e5e7eb;
+  border-radius: 12px;
+  background: transparent;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.add-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+  background: #f8f9fe;
+}
+
+/* ========================================
+   SKILLS CONTAINER
+   ======================================== */
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.skill-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.skill-item input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: #fafbfc;
+}
+
+.skill-item input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  background: white;
+}
+
+.remove-skill-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.remove-skill-btn:hover {
+  background: #fee2e2;
+}
+
+/* ========================================
+   CHECKBOX GROUP
+   ======================================== */
+
+.checkbox-group {
+  margin: 8px 0;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+/* ========================================
+   BUILDER ACTIONS
+   ======================================== */
+
+.builder-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #f0f0f0;
+  gap: 16px;
+}
+
+.builder-actions .btn-back {
+  background: transparent;
+  color: #6b7280;
+  border: 2px solid #e5e7eb;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.builder-actions .btn-back:hover {
+  background: #f3f4f6;
+  color: #1a1a2e;
+  border-color: #d1d5db;
+}
+
+.builder-actions .btn-continue {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.builder-actions .btn-continue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .progress-steps {
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .step {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+  }
+
+  .step-line {
+    width: 20px;
+  }
+
+  .builder-actions {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+
+  .builder-actions .btn-back,
+  .builder-actions .btn-continue {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+/* ========================================
+   ATS UPLOAD AREA
+   ======================================== */
+
+.ats-upload-area {
+  margin: 20px 0;
+}
+
+.upload-dropzone {
+  border: 2px dashed #d1d5db;
+  border-radius: 16px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafbfc;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.upload-dropzone:hover {
+  border-color: #667eea;
+  background: #f8f9fe;
+}
+
+.upload-dropzone.dragging {
+  border-color: #667eea;
+  background: #eef2ff;
+  transform: scale(1.02);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.upload-dropzone.has-file {
+  border-color: #10b981;
+  background: #f0fdf4;
+  padding: 20px;
+}
+
+
+/* ========================================
+   UPLOAD ICON
+   ======================================== */
+
+.upload-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #667eea;
+}
+
+.upload-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+
+/* ========================================
+   UPLOAD TEXT
+   ======================================== */
+
+.upload-text {
+  font-size: 16px;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.upload-text strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.upload-text span {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+
+/* ========================================
+   FILE FORMAT BADGES
+   ======================================== */
+
+.upload-formats {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.format-badge {
+  background: #f3f4f6;
+  color: #6b7280;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.format-badge:last-child {
+  background: #e5e7eb;
+  color: #4b5563;
+}
+
+
+/* ========================================
+   PRIVACY MESSAGE
+   ======================================== */
+
+.upload-privacy {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 8px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+
+/* ========================================
+   FILE INFORMATION
+   ======================================== */
+
+.file-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  gap: 14px;
+  box-sizing: border-box;
+}
+
+
+/* File icon */
+
+.file-icon {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #667eea;
+}
+
+.file-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+
+/* File details */
+
+.file-details {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.file-name {
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0 0 3px 0;
+  font-size: 14px;
+
+  /* Keep long filename inside its area */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-size {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+
+/* ========================================
+   UPLOAD PROGRESS
+   ======================================== */
+
+.upload-progress {
+  width: 100%;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  margin-top: 7px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 100%
+  );
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+
+/* ========================================
+   UPLOAD SUCCESS
+   ======================================== */
+
+.upload-success {
+  font-size: 12px;
+  color: #10b981;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 5px;
+}
+
+
+/* ========================================
+   REMOVE FILE BUTTON
+   IMPORTANT: overrides .ats-card button
+   ======================================== */
+
+.ats-card .remove-file-btn {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+  color: #ef4444;
+
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  box-sizing: border-box;
+}
+
+.ats-card .remove-file-btn:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.ats-card .remove-file-btn svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+
+/* ========================================
+   ATS PRIMARY / SECONDARY BUTTONS
+   ======================================== */
+
+.ats-card .btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  padding: 14px;
+
+  border: none;
+  border-radius: 12px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  margin-top: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 100%
+  );
+
+  color: white;
+
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.ats-card .btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.ats-card .btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+
+.ats-card .btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  padding: 14px;
+
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  margin-top: 10px;
+
+  background: transparent;
+  color: #6b7280;
+}
+
+.ats-card .btn-secondary:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+
+/* ========================================
+   SPIN ANIMATION
+   ======================================== */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ============================================================
+   !!! FIX: MAKE DROPZONE BOX VISIBLE !!!
+   Added at the end to override any conflicting styles
+   ============================================================ */
+
+/* Force the dropzone to have a visible dashed border */
+.upload-dropzone {
+  border: 3px dashed #cbd5e1 !important;
+  min-height: 220px !important;
+  width: 100% !important;
+  background: #fafbfc !important;
+  box-sizing: border-box !important;
+}
+
+/* Keep the dropzone visible when it has a file */
+.upload-dropzone.has-file {
+  min-height: 110px !important;
+  padding: 18px 20px !important;
+  border-color: #10b981 !important;
+  background: #f0fdf4 !important;
+}
+
+/* Ensure the container doesn't hide the dropzone */
+.ats-upload-area {
+  width: 100% !important;
+  display: block !important;
+  margin: 20px 0 !important;
+}
+
+/* Prevent any overflow from hiding the box */
+.ats-card {
+  overflow: visible !important;
+}
+/* ========================================
+   PAGE WRAPPER
+   ======================================== */
+
+.ats-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 20px;
+  background: #f5f6fa; /* page backdrop, outside the card */
+  box-sizing: border-box;
+}
+
+
+/* ========================================
+   ATS CARD (the bounded rectangle)
+   ======================================== */
+
+.ats-card {
+  width: 100%;
+  max-width: 640px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  overflow: visible !important; /* you already had this rule separately */
+}
+
+.ats-card h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.ats-card > p {
+  margin: 0 0 8px;
+  color: #6b7280;
+}
+/* ========================================
+   PAGE WRAPPER
+   ======================================== */
+
+.ats-result-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 20px;
+  background: #f5f6fa;
+  box-sizing: border-box;
+}
+
+
+/* ========================================
+   RESULT CARD
+   ======================================== */
+
+.ats-result-card {
+  width: 100%;
+  max-width: 640px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.ats-result-card h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.ats-result-card > p {
+  margin: 0 0 24px;
+  color: #6b7280;
+}
+
+
+/* ========================================
+   SCORE CIRCLE
+   ======================================== */
+
+.score-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+
+  background: conic-gradient(#667eea 0% 76%, #e5e7eb 76% 100%);
+  position: relative;
+}
+
+.score-circle::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.score-circle span {
+  position: relative;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.score-circle small {
+  position: relative;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.ats-result-card h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #1a1a2e;
+}
+
+
+/* ========================================
+   SUGGESTIONS
+   ======================================== */
+
+.suggestions {
+  text-align: left;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.suggestions h2 {
+  font-size: 16px;
+  margin: 0 0 14px;
+}
+
+.suggestion {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.suggestion span {
+  flex: 0 0 auto;
+  color: #10b981;
+  font-weight: 700;
+}
+
+.suggestion p {
+  margin: 0;
+  font-size: 14px;
+  color: #374151;
+}
+
+
+/* ========================================
+   ACTIONS
+   ======================================== */
+
+.ats-actions {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ats-actions .btn-primary {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.ats-actions .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.ats-actions .btn-secondary {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: #6b7280;
+}
+
+.ats-actions .btn-secondary:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.ats-actions .btn-back {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  color: #9ca3af;
+  transition: color 0.2s ease;
+}
+
+.ats-actions .btn-back:hover {
+  color: #6b7280;
+}
+/* ========================================
+   JOB DESCRIPTION SECTION
+   ======================================== */
+
+.job-description-section {
+  margin: 24px 0 4px;
+  text-align: left;
+}
+
+.job-description-section label {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.job-description-help {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.job-description-section textarea {
+  width: 100%;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1a1a2e;
+  resize: vertical;
+  min-height: 160px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: #fafbfc;
+}
+
+.job-description-section textarea::placeholder {
+  color: #9ca3af;
+  line-height: 1.5;
+}
+
+.job-description-section textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.character-count {
+  text-align: right;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 6px;
+}
+.suggestion-tag {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #9ca3af;
+  text-transform: capitalize;
 }
