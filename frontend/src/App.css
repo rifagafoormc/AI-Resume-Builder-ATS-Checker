@@ -4443,3 +4443,296 @@ body {
     cursor: pointer;
   }
 }
+/* ========================================
+   HERO SECTION HEIGHT & SPACING FIX
+   Added: 2026-09-05
+   ======================================== */
+
+/* Restore hero section to full height with proper spacing */
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 100px 20px 120px !important; /* Increased padding with !important to override */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 20px 0;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 12px 28px !important;
+  border-radius: 50px;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 30px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.hero-title {
+  color: white;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.hero-text {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 650px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: white;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+.stat-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Fix button sizes */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px 48px !important;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  text-decoration: none;
+  min-width: 200px;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 16px 48px !important;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  min-width: 200px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+/* Features section spacing */
+.features-section {
+  padding: 80px 8%;
+  background: #f8f9fe;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: white;
+  padding: 40px 30px !important;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.feature-icon {
+  font-size: 48px !important;
+  margin-bottom: 20px !important;
+}
+
+.feature-card h3 {
+  font-size: 22px !important;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  color: #6b7280;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ========================================
+   RESPONSIVE FIX FOR HERO SECTION
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: 80px 20px 100px !important;
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 20px 80px !important;
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-text {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: 12px 20px !important;
+    font-size: 14px;
+    min-width: unset;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stat-number {
+    font-size: 24px;
+  }
+
+  .hero-badge {
+    font-size: 12px;
+    padding: 8px 20px !important;
+  }
+
+  .feature-card {
+    padding: 30px 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 40px 16px 60px !important;
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-text {
+    font-size: 14px;
+  }
+
+  .hero-badge {
+    font-size: 11px;
+    padding: 6px 16px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    max-width: 100%;
+    padding: 10px 16px !important;
+    font-size: 13px;
+  }
+
+  .stat-number {
+    font-size: 20px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    padding: 24px 16px !important;
+  }
+
+  .feature-icon {
+    font-size: 36px !important;
+  }
+
+  .feature-card h3 {
+    font-size: 18px !important;
+  }
+}
