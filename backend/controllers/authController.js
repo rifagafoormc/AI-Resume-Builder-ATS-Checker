@@ -88,12 +88,12 @@ const login = async (req, res) => {
       });
     }
 
-    const isPasswordValid = await bcrypt.compare(
+    const isPasswordCorrect = await bcrypt.compare(
       password,
       user.password
     );
 
-    if (!isPasswordValid) {
+    if (!isPasswordCorrect) {
       return res.status(401).json({
         message: "Invalid email or password"
       });
@@ -262,6 +262,11 @@ const changePassword = async (req, res) => {
   try {
     const { currentPassword, newPassword } = req.body;
 
+    console.log("=== Change Password Request ===");
+    console.log("User ID from token:", req.user?.userId);
+    console.log("Current password provided:", currentPassword ? "Yes" : "No");
+    console.log("New password provided:", newPassword ? "Yes" : "No");
+
     if (!currentPassword || !newPassword) {
       return res.status(400).json({
         message: "Current password and new password are required"
@@ -283,12 +288,12 @@ const changePassword = async (req, res) => {
       });
     }
 
-    const isPasswordValid = await bcrypt.compare(
+    const isCurrentPasswordCorrect = await bcrypt.compare(
       currentPassword,
       user.password
     );
 
-    if (!isPasswordValid) {
+    if (!isCurrentPasswordCorrect) {
       return res.status(401).json({
         message: "Current password is incorrect"
       });
@@ -299,11 +304,13 @@ const changePassword = async (req, res) => {
     user.password = hashedPassword;
     await user.save();
 
+    console.log("Password changed successfully for user:", user.email);
     res.status(200).json({
       message: "Password changed successfully"
     });
 
   } catch (error) {
+    console.error("Change password error:", error);
     res.status(500).json({
       message: "Failed to change password",
       error: error.message

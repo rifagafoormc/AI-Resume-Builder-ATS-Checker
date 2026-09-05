@@ -201,6 +201,11 @@ function Profile() {
   };
 
   const handleChangePassword = async () => {
+    console.log("=== Frontend Change Password Request ===");
+    console.log("Current Password:", currentPassword ? "Yes" : "No");
+    console.log("New Password:", newPassword ? "Yes" : "No");
+    console.log("Confirm Password:", confirmPassword ? "Yes" : "No");
+
     if (!currentPassword || !newPassword || !confirmPassword) {
       setMessage("Please fill in all password fields.");
       setMessageType("error");
@@ -223,7 +228,11 @@ function Profile() {
     }
 
     try {
-      await API.put(
+      const token = localStorage.getItem("token");
+      console.log("Token exists:", !!token);
+      console.log("Token:", token);
+
+      const response = await API.put(
         "/auth/change-password",
         {
           currentPassword,
@@ -236,11 +245,12 @@ function Profile() {
         }
       );
 
+      console.log("Response:", response.data);
+
       setCurrentPassword("");
       setNewPassword("");
       setConfirmPassword("");
       setPasswordError("");
-
       setChangingPassword(false);
 
       setMessage("Password changed successfully!");
@@ -250,13 +260,17 @@ function Profile() {
         setMessage("");
       }, 3000);
     } catch (error) {
-      console.error("Error changing password:", error);
+      console.error("=== Error changing password ===");
+      console.error("Error object:", error);
+      console.error("Error response:", error.response);
+      console.error("Error response data:", error.response?.data);
+      console.error("Error status:", error.response?.status);
+      console.error("Error headers:", error.response?.headers);
 
       setMessage(
         error.response?.data?.message ||
-          "Failed to change password."
+          "Failed to change password. Please try again."
       );
-
       setMessageType("error");
     }
   };

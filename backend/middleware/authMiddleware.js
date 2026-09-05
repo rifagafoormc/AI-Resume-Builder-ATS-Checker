@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 
 const authMiddleware = (req, res, next) => {
   try {
-    // Get token from Authorization header
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -13,15 +12,24 @@ const authMiddleware = (req, res, next) => {
 
     const token = authHeader.split(" ")[1];
 
-    // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Store decoded user information in request
+    // Debug log - remove once confirmed working
+    console.log("Decoded token:", decoded);
+
+    if (!decoded.userId) {
+      console.error("Token missing userId field");
+      return res.status(401).json({
+        message: "Invalid token structure"
+      });
+    }
+
     req.user = decoded;
 
     next();
 
   } catch (error) {
+    console.error("Auth middleware error:", error.message);
     return res.status(401).json({
       message: "Invalid or expired token"
     });
