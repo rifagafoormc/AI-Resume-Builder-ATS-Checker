@@ -3914,3 +3914,532 @@ body {
   color: #9ca3af;
   text-transform: capitalize;
 }
+@media (max-width: 480px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important; /* Prevents iOS zoom */
+    padding: 12px 14px !important;
+  }
+}
+/* ========================================
+   COMPREHENSIVE RESPONSIVE FIXES
+   ======================================== */
+
+/* ===== Mobile First Improvements ===== */
+
+/* Fix navbar on all screen sizes */
+@media (max-width: 768px) {
+  .navbar {
+    height: auto;
+    padding: 12px 5%;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+
+  .nav-button {
+    padding: 6px 16px;
+    font-size: 13px;
+  }
+}
+
+/* ===== Hero Section Mobile ===== */
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 40px 16px 60px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .hero-text {
+    font-size: 15px;
+    padding: 0 10px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stat-number {
+    font-size: 24px;
+  }
+
+  .trustpilot {
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+  }
+}
+
+/* ===== Templates Grid Mobile ===== */
+@media (max-width: 600px) {
+  .templates-section {
+    padding: 30px 4%;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+  }
+
+  .template-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .template-card {
+    max-width: 100%;
+  }
+
+  .template-preview {
+    height: 160px;
+  }
+
+  .template-tabs {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+
+  .header-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-buttons .btn-primary,
+  .header-buttons .btn-secondary {
+    width: 100%;
+    max-width: 260px;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* ===== Templates Page (Selection) Mobile ===== */
+@media (max-width: 640px) {
+  .templates-page {
+    padding: 20px 12px;
+  }
+
+  .templates-header h1 {
+    font-size: 24px;
+  }
+
+  .templates-header p {
+    font-size: 14px;
+  }
+
+  .templates-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .template-preview {
+    height: 180px;
+  }
+
+  .template-info {
+    padding: 14px 16px 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .template-text h3 {
+    font-size: 16px;
+  }
+
+  .template-text p {
+    font-size: 13px;
+  }
+
+  .select-button {
+    margin: 0 16px 14px;
+    width: calc(100% - 32px);
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .continue-button {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+/* ===== Dashboard Mobile ===== */
+@media (max-width: 768px) {
+  .dashboard-content {
+    padding: 20px 4%;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px 4%;
+    gap: 12px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 20px;
+  }
+
+  .dashboard-header button {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .dashboard-title {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .dashboard-title h2 {
+    font-size: 22px;
+  }
+
+  .dashboard-title button {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .resume-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .resume-card {
+    padding: 16px;
+  }
+
+  .resume-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .resume-actions button {
+    flex: 1;
+    min-width: 80px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+/* ===== Builder Page Mobile ===== */
+@media (max-width: 640px) {
+  .builder-page {
+    padding: 20px 12px;
+  }
+
+  .builder-container {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .builder-header h1 {
+    font-size: 22px !important;
+  }
+
+  .builder-header p {
+    font-size: 14px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .builder-actions {
+    flex-direction: column-reverse;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+
+  .builder-actions .btn-back,
+  .builder-actions .btn-continue {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 12px 20px;
+  }
+
+  .ai-enhance-btn {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+}
+
+/* ===== Auth Pages Mobile ===== */
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 16px;
+  }
+
+  .auth-card {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .auth-card h1 {
+    font-size: 22px;
+  }
+
+  .auth-card input {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  .auth-card button {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+/* ===== ATS Pages Mobile ===== */
+@media (max-width: 640px) {
+  .ats-page,
+  .ats-result-page {
+    padding: 30px 12px;
+  }
+
+  .ats-card,
+  .ats-result-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .ats-card h1,
+  .ats-result-card h1 {
+    font-size: 20px;
+  }
+
+  .upload-dropzone {
+    min-height: 160px !important;
+    padding: 24px 16px !important;
+  }
+
+  .upload-dropzone.has-file {
+    min-height: 90px !important;
+    padding: 14px 16px !important;
+  }
+
+  .upload-text strong {
+    font-size: 15px;
+  }
+
+  .upload-text span {
+    font-size: 13px;
+  }
+
+  .file-name {
+    font-size: 13px;
+  }
+
+  .score-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .score-circle span {
+    font-size: 28px;
+  }
+
+  .score-circle small {
+    font-size: 12px;
+  }
+
+  .ats-actions .btn-primary,
+  .ats-actions .btn-secondary {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* ===== Fix overflowing elements ===== */
+@media (max-width: 480px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Fix tables and wide elements */
+  .template-placeholder,
+  .resume-card,
+  .card {
+    overflow: hidden;
+  }
+
+  /* Fix progress steps on small screens */
+  .progress-steps {
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .step {
+    width: 26px;
+    height: 26px;
+    font-size: 10px;
+  }
+
+  .step-line {
+    width: 16px;
+  }
+
+  /* Fix feature cards */
+  .features-grid,
+  .steps-grid,
+  .testimonials-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .feature-card,
+  .step-card,
+  .testimonial-card,
+  .pricing-card {
+    padding: 20px 16px;
+  }
+
+  .footer {
+    padding: 40px 16px 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+/* ===== Landscape phone fix ===== */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero-section {
+    padding: 30px 16px 40px;
+  }
+
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .hero-text {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .hero-badge {
+    margin-bottom: 16px;
+    padding: 6px 16px;
+    font-size: 11px;
+  }
+
+  .hero-stats {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .stat-number {
+    font-size: 20px;
+  }
+}
+
+/* ===== Fix modal/dropdown z-index issues ===== */
+.dropdown-menu {
+  z-index: 1000;
+}
+
+/* ===== Fix touch targets on mobile ===== */
+@media (max-width: 768px) {
+  button,
+  a,
+  .nav-link,
+  .tab,
+  .select-button,
+  .template-card {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .nav-link {
+    padding: 8px 12px;
+  }
+
+  .template-card {
+    cursor: pointer;
+  }
+}
