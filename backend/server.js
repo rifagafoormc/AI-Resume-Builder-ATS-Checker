@@ -68,21 +68,16 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
+// Start server locally
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`\n🚀 Server running on port ${PORT}`);
-  console.log(`📍 http://localhost:${PORT}`);
-  console.log(`✅ MongoDB: ${process.env.MONGODB_URI ? 'Connected' : 'Not configured'}`);
-  console.log(`✅ Gemini AI: ${process.env.GEMINI_API_KEY ? 'Configured' : 'Not configured'}`);
-  console.log(`\n📋 Available endpoints:`);
-  console.log(`   GET  /`);
-  console.log(`   POST /api/auth/register`);
-  console.log(`   POST /api/auth/login`);
-  console.log(`   GET  /api/resumes`);
-  console.log(`   POST /api/resumes`);
-  console.log(`   POST /api/ats/analyze-upload`);
-  console.log(`   GET  /api/ats/history`);
-  console.log(`   ✅ /api/admin - Admin routes added`);
-  console.log(`\n✨ Server ready!\n`);
-});
+  app.listen(PORT, () => {
+    console.log(`\n🚀 Server running on port ${PORT}`);
+    console.log(`📍 http://localhost:${PORT}`);
+    console.log(`\n✨ Server ready!\n`);
+  });
+}
+
+// Export Express app for Vercel
+module.exports = app;
