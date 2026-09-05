@@ -13,19 +13,44 @@ function ForgotPassword() {
 
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  // Password validation function (matches backend)
+  const validatePassword = (password) => {
+    if (!password || password.length < 6) {
+      return "Password must be at least 6 characters long";
+    }
+    if (!/\d/.test(password)) {
+      return "Password must contain at least one number";
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>_\-+=[\]\\;'`~/]/.test(password)) {
+      return "Password must contain at least one special character";
+    }
+    return null; // valid
+  };
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    // Real-time password validation
+    if (name === "newPassword") {
+      const error = validatePassword(value);
+      setPasswordError(error);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.newPassword.length < 6) {
-      setMessage("Password must be at least 6 characters.");
+    // Client-side validation before submitting
+    const error = validatePassword(formData.newPassword);
+    if (error) {
+      setPasswordError(error);
+      setMessage(error);
       setMessageType("error");
       return;
     }
@@ -100,7 +125,7 @@ function ForgotPassword() {
             required
             style={{
               padding: "13px 16px",
-              border: "2px solid #e5e7eb",
+              border: `2px solid ${passwordError ? "#dc2626" : "#e5e7eb"}`,
               borderRadius: "12px",
               fontSize: "14px",
               background: "#fafbfc",
@@ -108,6 +133,42 @@ function ForgotPassword() {
               boxSizing: "border-box",
             }}
           />
+
+          {/* Password requirements hint */}
+          <div style={{ 
+            marginTop: "8px", 
+            fontSize: "13px", 
+            color: passwordError ? "#dc2626" : "#6b7280",
+            transition: "color 0.3s ease"
+          }}>
+            <div>Password must contain:</div>
+            <ul style={{ 
+              margin: "4px 0 0 0", 
+              paddingLeft: "20px",
+              listStyleType: "disc"
+            }}>
+              <li style={{ 
+                color: formData.newPassword.length >= 6 ? "#199E72" : (formData.newPassword ? "#dc2626" : "#6b7280")
+              }}>
+                At least 6 characters {formData.newPassword && (formData.newPassword.length >= 6 ? "✅" : "❌")}
+              </li>
+              <li style={{ 
+                color: /\d/.test(formData.newPassword) ? "#199E72" : (formData.newPassword ? "#dc2626" : "#6b7280")
+              }}>
+                At least one number {formData.newPassword && (/\d/.test(formData.newPassword) ? "✅" : "❌")}
+              </li>
+              <li style={{ 
+                color: /[!@#$%^&*(),.?":{}|<>_\-+=[\]\\;'`~/]/.test(formData.newPassword) ? "#199E72" : (formData.newPassword ? "#dc2626" : "#6b7280")
+              }}>
+                At least one special character {formData.newPassword && (/[!@#$%^&*(),.?":{}|<>_\-+=[\]\\;'`~/]/.test(formData.newPassword) ? "✅" : "❌")}
+              </li>
+            </ul>
+            {passwordError && (
+              <div style={{ color: "#dc2626", marginTop: "4px", fontWeight: "500" }}>
+                ⚠️ {passwordError}
+              </div>
+            )}
+          </div>
 
           <input
             type="password"
@@ -124,6 +185,7 @@ function ForgotPassword() {
               background: "#fafbfc",
               width: "100%",
               boxSizing: "border-box",
+              marginTop: "12px"
             }}
           />
 
@@ -185,4 +247,3 @@ function ForgotPassword() {
 }
 
 export default ForgotPassword;
-

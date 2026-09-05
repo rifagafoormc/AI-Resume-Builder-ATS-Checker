@@ -13,18 +13,33 @@ function Profile() {
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState(false);
   const [changingPassword, setChangingPassword] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false); // FIXED: Added missing state
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const [name, setName] = useState("");
 
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
 
   const token = localStorage.getItem("token");
+
+  // Password validation function (matches backend)
+  const validatePassword = (password) => {
+    if (!password || password.length < 6) {
+      return "Password must be at least 6 characters long";
+    }
+    if (!/\d/.test(password)) {
+      return "Password must contain at least one number";
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>_\-+=[\]\\;'`~/]/.test(password)) {
+      return "Password must contain at least one special character";
+    }
+    return null; // valid
+  };
 
   useEffect(() => {
     if (!token) {
@@ -177,6 +192,14 @@ function Profile() {
   // CHANGE PASSWORD
   // =========================
 
+  const handleNewPasswordChange = (e) => {
+    const value = e.target.value;
+    setNewPassword(value);
+    // Real-time password validation
+    const error = validatePassword(value);
+    setPasswordError(error);
+  };
+
   const handleChangePassword = async () => {
     if (!currentPassword || !newPassword || !confirmPassword) {
       setMessage("Please fill in all password fields.");
@@ -184,10 +207,11 @@ function Profile() {
       return;
     }
 
-    if (newPassword.length < 6) {
-      setMessage(
-        "New password must be at least 6 characters."
-      );
+    // Client-side validation
+    const error = validatePassword(newPassword);
+    if (error) {
+      setPasswordError(error);
+      setMessage(error);
       setMessageType("error");
       return;
     }
@@ -215,6 +239,7 @@ function Profile() {
       setCurrentPassword("");
       setNewPassword("");
       setConfirmPassword("");
+      setPasswordError("");
 
       setChangingPassword(false);
 
@@ -798,19 +823,54 @@ function Profile() {
                 type="password"
                 placeholder="New Password"
                 value={newPassword}
-                onChange={(e) =>
-                  setNewPassword(e.target.value)
-                }
+                onChange={handleNewPasswordChange}
                 style={{
                   width: "100%",
                   boxSizing: "border-box",
                   padding: "12px 14px",
                   marginBottom: "12px",
-                  border: "1px solid #CBD5E1",
+                  border: `1px solid ${passwordError ? "#dc2626" : "#CBD5E1"}`,
                   borderRadius: "8px",
                   fontSize: "15px",
                 }}
               />
+
+              {/* Password requirements hint */}
+              <div style={{ 
+                marginTop: "-8px",
+                marginBottom: "12px",
+                fontSize: "13px", 
+                color: passwordError ? "#dc2626" : "#6b7280",
+                transition: "color 0.3s ease"
+              }}>
+                <div>Password must contain:</div>
+                <ul style={{ 
+                  margin: "4px 0 0 0", 
+                  paddingLeft: "20px",
+                  listStyleType: "disc"
+                }}>
+                  <li style={{ 
+                    color: newPassword.length >= 6 ? "#199E72" : (newPassword ? "#dc2626" : "#6b7280")
+                  }}>
+                    At least 6 characters {newPassword && (newPassword.length >= 6 ? "✅" : "❌")}
+                  </li>
+                  <li style={{ 
+                    color: /\d/.test(newPassword) ? "#199E72" : (newPassword ? "#dc2626" : "#6b7280")
+                  }}>
+                    At least one number {newPassword && (/\d/.test(newPassword) ? "✅" : "❌")}
+                  </li>
+                  <li style={{ 
+                    color: /[!@#$%^&*(),.?":{}|<>_\-+=[\]\\;'`~/]/.test(newPassword) ? "#199E72" : (newPassword ? "#dc2626" : "#6b7280")
+                  }}>
+                    At least one special character {newPassword && (/[!@#$%^&*(),.?":{}|<>_\-+=[\]\\;'`~/]/.test(newPassword) ? "✅" : "❌")}
+                  </li>
+                </ul>
+                {passwordError && (
+                  <div style={{ color: "#dc2626", marginTop: "4px", fontWeight: "500" }}>
+                    ⚠️ {passwordError}
+                  </div>
+                )}
+              </div>
 
               <input
                 type="password"
@@ -857,6 +917,7 @@ function Profile() {
                     setCurrentPassword("");
                     setNewPassword("");
                     setConfirmPassword("");
+                    setPasswordError("");
                   }}
                   style={{
                     background: "#ffffff",

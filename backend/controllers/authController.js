@@ -2,6 +2,20 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+// Password validation helper
+const isPasswordValid = (password) => {
+  if (!password || password.length < 6) {
+    return "Password must be at least 6 characters long";
+  }
+  if (!/\d/.test(password)) {
+    return "Password must contain at least one number";
+  }
+  if (!/[!@#$%^&*(),.?":{}|<>_\-+=[\]\\;'`~/]/.test(password)) {
+    return "Password must contain at least one special character";
+  }
+  return null; // valid
+};
+
 // Signup
 const signup = async (req, res) => {
   try {
@@ -10,6 +24,13 @@ const signup = async (req, res) => {
     if (!name || !email || !password) {
       return res.status(400).json({
         message: "Name, email and password are required"
+      });
+    }
+
+    const passwordError = isPasswordValid(password);
+    if (passwordError) {
+      return res.status(400).json({
+        message: passwordError
       });
     }
 
@@ -116,6 +137,13 @@ const createAdmin = async (req, res) => {
     if (!name || !email || !password || !adminSecret) {
       return res.status(400).json({
         message: "Name, email, password and admin secret are required"
+      });
+    }
+
+    const passwordError = isPasswordValid(password);
+    if (passwordError) {
+      return res.status(400).json({
+        message: passwordError
       });
     }
 
@@ -240,9 +268,10 @@ const changePassword = async (req, res) => {
       });
     }
 
-    if (newPassword.length < 6) {
+    const passwordError = isPasswordValid(newPassword);
+    if (passwordError) {
       return res.status(400).json({
-        message: "New password must be at least 6 characters"
+        message: passwordError
       });
     }
 
@@ -293,9 +322,10 @@ const forgotPassword = async (req, res) => {
       });
     }
 
-    if (newPassword.length < 6) {
+    const passwordError = isPasswordValid(newPassword);
+    if (passwordError) {
       return res.status(400).json({
-        message: "New password must be at least 6 characters"
+        message: passwordError
       });
     }
 

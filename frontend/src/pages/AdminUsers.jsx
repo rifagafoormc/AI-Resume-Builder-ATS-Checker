@@ -19,7 +19,22 @@ function AdminUsers() {
     password: ""
   });
 
+  const [passwordError, setPasswordError] = useState("");
   const [modal, setModal] = useState({ show: false, message: "", type: "" });
+
+  // Password validation function (matches backend)
+  const validatePassword = (password) => {
+    if (!password || password.length < 6) {
+      return "Password must be at least 6 characters long";
+    }
+    if (!/\d/.test(password)) {
+      return "Password must contain at least one number";
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>_\-+=[\]\\;'`~/]/.test(password)) {
+      return "Password must contain at least one special character";
+    }
+    return null; // valid
+  };
 
   useEffect(() => {
     loadUsers();
@@ -72,8 +87,24 @@ function AdminUsers() {
     }
   };
 
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setNewUser({ ...newUser, password: value });
+    // Real-time password validation
+    const error = validatePassword(value);
+    setPasswordError(error);
+  };
+
   const handleAddUser = async (e) => {
     e.preventDefault();
+
+    // Client-side validation before submitting
+    const error = validatePassword(newUser.password);
+    if (error) {
+      setPasswordError(error);
+      setModal({ show: true, message: error, type: "error" });
+      return;
+    }
 
     try {
       const token = localStorage.getItem("token");
@@ -93,6 +124,7 @@ function AdminUsers() {
         email: "",
         password: ""
       });
+      setPasswordError("");
 
       setShowAddForm(false);
       await loadUsers();
@@ -396,9 +428,67 @@ function AdminUsers() {
           <div className="admin-form-card">
             <h2>Add New User</h2>
             <form onSubmit={handleAddUser}>
-              <input type="text" placeholder="User name" value={newUser.name} onChange={(e) => setNewUser({ ...newUser, name: e.target.value })} required />
-              <input type="email" placeholder="Email" value={newUser.email} onChange={(e) => setNewUser({ ...newUser, email: e.target.value })} required />
-              <input type="password" placeholder="Password" value={newUser.password} onChange={(e) => setNewUser({ ...newUser, password: e.target.value })} required minLength={6} />
+              <input 
+                type="text" 
+                placeholder="User name" 
+                value={newUser.name} 
+                onChange={(e) => setNewUser({ ...newUser, name: e.target.value })} 
+                required 
+              />
+              <input 
+                type="email" 
+                placeholder="Email" 
+                value={newUser.email} 
+                onChange={(e) => setNewUser({ ...newUser, email: e.target.value })} 
+                required 
+              />
+              <input 
+                type="password" 
+                placeholder="Password" 
+                value={newUser.password} 
+                onChange={handlePasswordChange} 
+                required 
+                style={{
+                  border: `2px solid ${passwordError ? "#dc2626" : "#e5e7eb"}`
+                }}
+              />
+              
+              {/* Password requirements hint */}
+              <div style={{ 
+                marginTop: "-8px",
+                fontSize: "13px", 
+                color: passwordError ? "#dc2626" : "#6b7280",
+                transition: "color 0.3s ease"
+              }}>
+                <div>Password must contain:</div>
+                <ul style={{ 
+                  margin: "4px 0 0 0", 
+                  paddingLeft: "20px",
+                  listStyleType: "disc"
+                }}>
+                  <li style={{ 
+                    color: newUser.password.length >= 6 ? "#199E72" : (newUser.password ? "#dc2626" : "#6b7280")
+                  }}>
+                    At least 6 characters {newUser.password && (newUser.password.length >= 6 ? "✅" : "❌")}
+                  </li>
+                  <li style={{ 
+                    color: /\d/.test(newUser.password) ? "#199E72" : (newUser.password ? "#dc2626" : "#6b7280")
+                  }}>
+                    At least one number {newUser.password && (/\d/.test(newUser.password) ? "✅" : "❌")}
+                  </li>
+                  <li style={{ 
+                    color: /[!@#$%^&*(),.?":{}|<>_\-+=[\]\\;'`~/]/.test(newUser.password) ? "#199E72" : (newUser.password ? "#dc2626" : "#6b7280")
+                  }}>
+                    At least one special character {newUser.password && (/[!@#$%^&*(),.?":{}|<>_\-+=[\]\\;'`~/]/.test(newUser.password) ? "✅" : "❌")}
+                  </li>
+                </ul>
+                {passwordError && (
+                  <div style={{ color: "#dc2626", marginTop: "4px", fontWeight: "500" }}>
+                    ⚠️ {passwordError}
+                  </div>
+                )}
+              </div>
+
               <div className="admin-form-actions">
                 <button type="submit" className="admin-primary-btn">Add User</button>
                 <button type="button" className="admin-secondary-btn" onClick={() => setShowAddForm(false)}>Cancel</button>
